@@ -13,7 +13,7 @@
 ############################
 
 # ********* Sample Data ********* #
-contents_test = '''['10_German.srt', '11_Greek.srt', '12_Spanish.srt', '13_Spanish.srt', '14_Spanish.srt', '15_Spanish.srt', '16_baq.srt', '17_Finnish.srt', '18_fil.srt', '19_French.srt', '20_French.srt', '21_French.srt', '22_glg.srt', '23_Hebrew.srt', '24_hrv.srt', '25_Hungarian.srt', '26_Indonesian.srt', '27_Italian.srt', '28_Japanese.srt', '29_Korean.srt', '2_English.srt', '30_may.srt', '31_Bokmal.srt', '32_Dutch.srt', '33_Polish.srt', '34_Portuguese.srt', '35_Portuguese.srt', '36_Portuguese.srt', '37_Portuguese.srt', '38_Romanian.srt', '39_Russian.srt', '3_English.srt', '40_Swedish.srt', '41_Thai.srt', '42_Turkish.srt', '43_ukr.srt', '44_Vietnamese.srt', '45_Chinese.srt', '46_Chinese.srt', '4_Arabic.srt', '5_cat.srt', '6_Czech.srt', '7_Danish.srt', '8_German.srt', '9_German.srt']'''
+contents_test = '''['10_German.srt', '11_Greek.srt', '12_Spanish.srt', '13_Spanish.srt', '14_Spanish.srt', '15_Spanish.srt', '16_baq.srt', '17_Finnish.srt', '18_fil.srt', '19_French.srt', '20_French.srt', '21_French.srt', '22_glg.srt', '23_Hebrew.srt', '24_hrv.srt', '25_Hungarian.srt', '26_Indonesian.srt', '27_Italian.srt', '28_Japanese.srt', '29_Korean.srt', '2_English.srt', '30_may.srt', '31_Bokmal.srt', '32_Dutch.srt', '33_Polish.srt', '34_Portuguese.srt', '35_Portuguese.srt', '36_Portuguese.srt', '37_Portuguese.srt', '38_Romanian.srt', '39_Russian.srt', '4_English.srt', '40_Swedish.srt', '41_Thai.srt', '42_Turkish.srt', '43_ukr.srt', '44_Vietnamese.srt', '45_Chinese.srt', '46_Chinese.srt', '4_Arabic.srt', '5_cat.srt', '6_Czech.srt', '7_Danish.srt', '8_German.srt', '9_German.srt']'''
 # ********* Sample Data ********* #
 
 # ********* Sample Data ********* #
@@ -21,7 +21,7 @@ Path = r'R:\Videos\Bebes.Kids.1992.1080p.BluRay.x265-RARBG'
 # ********* Sample Data ********* #
 
 
-import os, pyperclip, re, time
+import os, pyperclip, re, time, shutil
 
 print('Finding Sub folder')
 print('Locating Current Directory')
@@ -56,17 +56,18 @@ else:
 print('Checking for Subs Folder')
 SubPath = Path + r'\Subs'
 print('SubPath -->' + SubPath)
-Subs_Is_Present = os.path.exists(SubPath)
+SubsArePresent = os.path.exists(SubPath)
 
 print('Checking English Sub file')
 print('List of contents in Sub folder')
-#print(os.listdir(SubPath))
+
+print(str(os.listdir(SubPath)))
 #folder_Contents = os.listdir(SubPath)
 
 ### Test Data ###
-print('******* Contents *******')
-print(contents_test)
-print('******* Contents *******')
+#print('******* Contents *******')
+#print(contents_test)
+#print('******* Contents *******')
 ### Test Data ###
 print()
 print()
@@ -81,17 +82,23 @@ print()
 
 print('List of English in subfolder')
 englishRegex = re.compile(r'\d{1,2}_[E|e]nglish.srt', flags=re.IGNORECASE)
+print('*** Test data ***')
 matched = englishRegex.findall(contents_test)
+print('*****************')
+matched = englishRegex.findall(str(os.listdir(SubPath)))
 
 
 print('******* Contents *******')
 print(matched)
 print('******* Contents *******')
 
+
+
 print()
 print()
 print()
 print()
+
 
 print('''****************************
 Status:
@@ -100,7 +107,47 @@ Clipboard contains:   %s
 Clipboard is Path?:   %s
 Dir Contains Sub:     %s
 folder_Contents type: %s
-****************************''' % (current,  Path, os.path.isabs(Path), Subs_Is_Present, type(matched)))
+****************************''' % (current,  Path, os.path.isabs(Path), SubsArePresent, type(matched)))
 
+print()
+print()
+print()
+print()
+print('Moving to new directory...')
+os.chdir(Path)
+print(os.getcwd())
+###########################################################
+#  New Module
+#  move subtitles to main folders
+#
+#
+#
+#
+#
+#
+#
+###########################################################
+
+SourcePath = SubPath
+DestinPath = Path
+
+lang = ["en","eng","english","english2"]
+LangIndex = 0
+
+print("Moving from \n--->'%s'\n to \n--->'%s'" % (SourcePath, DestinPath))
+
+for file in matched:
+    print('Moving: ' + file)
+    Source = os.path.join(SourcePath, file)
+
+    Destin = os.path.join(DestinPath, os.path.basename(DestinPath)+'.' + lang[LangIndex] + '.srt')
+    print('''
+    Moving from
+    ---> %s
+    to
+    ---> %s
+    ''' % (Source, Destin))
+    shutil.copy(Source, Destin)
+    LangIndex += 1
 
 print('End')
