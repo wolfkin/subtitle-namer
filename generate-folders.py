@@ -4,10 +4,10 @@ folders = ["Behind the Scenes", "Deleted Scenes", "Featurettes", "Interviews", "
 
 path = pyperclip.paste()
 
-if os.path.isabs(path):
-    print('Absolute Path Found')
-else:
-    print('Absolute Path Not Found')
+assert os.path.isabs(path), 'Path is not absolute'
+
+
+print('Absolute Path Found')
 
 
 # If the copied path is a path to file drop the file name. Otherwise we'll

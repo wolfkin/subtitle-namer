@@ -27,7 +27,7 @@ print('Finding Sub folder')
 print('Locating Current Directory')
 current = os.getcwd()
 print('Getting contents of Clipboard')
-#Path = pyperclip.paste()
+Path = pyperclip.paste()
 print("**** Pause %s seconds ****" % ('One'))
 time.sleep(.2)
 
