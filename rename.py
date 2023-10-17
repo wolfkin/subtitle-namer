@@ -94,8 +94,8 @@ print('******* Contents *******')
 
 
 
-print()
-print()
+print()  #TODO: remove RARBG files
+print()  #TODO: check for TV style subtitles
 print()
 print()
 

@@ -1,0 +1,30 @@
+
+##########################################################################
+# To prune the following files from folders
+# - RARBG_DO_NOT_MIRROR.exe
+# - RARBG.txt
+# - Downloaded from Rarbg.to.txt
+# - Torrent Downloaded from Rarbg.to.txt
+##########################################################################
+
+import os, pyperclip, re, time, shutil
+
+# List of Targets
+target_files = [RARBG_DO_NOT_MIRROR.exe, RARBG.txt, Downloaded from Rarbg.to.txt, Torrent Downloaded from Rarbg.to.txt]
+
+# Take Object
+
+# Skim files
+
+# Current file
+# If current file = List of Targets
+# Delete file
+# Output to Pruned File = Foldername
+
+
+#
+#
+#
+#
+#
+#
