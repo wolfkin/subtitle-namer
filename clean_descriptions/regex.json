@@ -1,0 +1,14 @@
+{
+	"Fixes":[
+	{
+		"note": "Fix Carriage Returns",
+		"regex": "<br>",
+		"replace": "</p><p>"
+	},
+	{	
+		"note": "Fix Elipsis...",
+		"regex": "(\\.\\s?){3,}",
+		"replace": "… "
+	}
+	]
+}

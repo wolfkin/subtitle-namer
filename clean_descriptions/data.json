@@ -1,0 +1,12 @@
+{
+	"Fixes":[
+	{
+		"note": "Fix Carriage Returns",
+		"regex": "<br>",
+		"replace": "</p><p>"
+	},
+	{
+		"note": "help"
+	}
+	]
+}3.
