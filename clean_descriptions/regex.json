@@ -5,10 +5,10 @@
 		"regex": "<br>",
 		"replace": "</p><p>"
 	},
-	{	
-		"note": "Fix Elipsis...",
-		"regex": "(\\.\\s?){3,}",
-		"replace": "… "
+	{
+    "note": "Fix Elipsis...",
+    "regex": "(\\.\\s?){3,}",
+    "replace": "\u2026 "
 	}
 	]
 }
