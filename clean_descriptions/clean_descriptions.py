@@ -11,7 +11,7 @@ regex1=	{
 	}
 regex2= {	
 		"note": "Fix Elipsis...",
-		"regex": "(\.\s?){3,}",
+		"regex": "\s?(\.\s?){3,}",
 		"replace": "… "
 	}
 fixes = {             
@@ -26,7 +26,7 @@ def clean_text(dirty):
         print("Preparing: ", x["note"])
         clean = re.sub(x["regex"], x["replace"], dirty)
         dirty = clean
-        time.sleep(.3)
+        time.sleep(.1)
     return clean
 #######################################
 
