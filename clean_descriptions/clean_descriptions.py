@@ -14,9 +14,28 @@ regex2= {
 		"regex": "\s?(\.\s?){3,}",
 		"replace": "… "
 	}
+regex3= {
+        "note": "Two Spaces to One",
+        "regex": "  ",
+        "replace": " "
+    }
+regex4= {
+        "note": "",
+        "regex": "",
+        "replace": ""
+    }
+regex5= {
+        "note": "",
+        "regex": "",
+        "replace": ""
+    }
 fixes = {             
     "1": regex1,
-    "2": regex2}
+    "2": regex2,
+    "3": regex3,
+#    "4": regex4,
+#    "5": regex5,
+    }
 #######################################
 ###  Cleaning Using variables      ####
 ###  Pt 2: Function                ####
